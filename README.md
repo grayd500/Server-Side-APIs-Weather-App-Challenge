@@ -1,29 +1,69 @@
-## Module 6 Challenge
-Due Sep 18 by 11:59pm Points 100 Submitting a text entry box
-Server-Side APIs Challenge: Weather Dashboard
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+## Weather Dashboard
 
-Use the 5 Day Weather Forecast https://openweathermap.org/forecast5 to an external site. to retrieve weather data for cities. The base URL should look like the following: https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate.
+## Description
 
-You will use localStorage to store any persistent data. For more information on how to work with the OpenWeather API, refer to the Full-Stack Blog on how to use API keysLinks to an external site..
+The Weather Dashboard is a web application that allows travelers to check the weather outlook for multiple cities. It provides both current and future weather conditions for a selected city and maintains a search history for easy access.
 
-HINT
-Using the 5 Day Weather Forecast API, you'll notice that you will need to pass in coordinates instead of just a city name. Using the OpenWeatherMap APIs, how could we retrieve geographical coordinates given a city name?
+### Motivation
 
-You will use localStorage to store any persistent data. For more information on how to work with the OpenWeather API, refer to the Full-Stack Blog on how to use API keys https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys 
+The motivation behind this project is to assist travelers in planning their trips effectively by providing them with up-to-date weather information for their destination cities.
 
-User Story
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
+### Problem Solved
 
-Acceptance Criteria
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
+The Weather Dashboard solves the problem of quickly accessing weather data for multiple cities, helping travelers make informed decisions about their travel plans.
+
+### What I Learned
+
+While building this project, I learned how to use third-party APIs to retrieve weather data, work with localStorage to store user data, and dynamically update HTML and CSS to display the information effectively.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Open the project folder in your code editor.
+3. Obtain an API key from OpenWeatherMap (follow their documentation).
+4. Create a `config.js` file in the project root and store your API key there:
+
+   ```javascript
+   // config.js
+   const API_KEY = 'your_api_key_here';
+
+   ```markdown
+Save the file and run the project using a development server (e.g., Live Server for Visual Studio Code).
+
+## Usage
+
+1. Open the Weather Dashboard in your web browser.
+2. Enter the name of the city you want to check the weather for in the search input.
+3. Click the "Search" button.
+4. You will be presented with current and future weather conditions for the selected city.
+5. The city will be added to the search history for easy access.
+
+![Weather Dashboard Screenshot](assets/images/screenshot.png)
+
+## Credits
+
+- This project was created by [Your Name].
+- Third-party assets used in this project:
+  - [OpenWeatherMap API](https://openweathermap.org/api)
+- References and tutorials:
+  - [Full-Stack Blog on how to use API keys](https://example.com/api-key-tutorial)
+- This project makes use of the following third-party libraries:
+- [jQuery](https://jquery.com/)
+- [Bootstrap](https://getbootstrap.com/)
+
+We would like to express our gratitude to the developers of jQuery and Bootstrap for their valuable contributions to web development.
+
+  
+
+## License
+
+This project is licensed under the MIT License.
