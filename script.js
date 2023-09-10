@@ -1,64 +1,45 @@
-require('dotenv').config();
+const apiKey = "17c217eb87e1e62fc400a04808b0be98";
 
-// First, we save the city name and API key in variables. Like putting your lunch in a lunchbox!
-const cityName = "CITY_NAME";
-const apiKey = process.env.API_KEY;
+document.addEventListener("DOMContentLoaded", function() { 
+  const searchBtn = document.getElementById("searchBtn"); // Find the button
 
-// Then we ask the OpenWeatherMap for weather info for that city.
-fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`)
-  .then(response => response.json())  // Once we get a reply, we read the info they sent back.
-  .then(data => {
-    console.log(data);  // We can check the whole info in the console.
+  // Listen for a click on the search button
+  searchBtn.addEventListener("click", function() { 
 
-    // Here's how to find the latitude and longitude in the info.
-    const lat = data.city.coord.lat;
-    const lon = data.city.coord.lon;
+    // What city was typed into the input field? Let's find out!
+    const cityName = document.getElementById("cityInput").value;
 
-    // Now you can use these for anything else you want!
-  })
-  .catch(error => console.error("Something went wrong:", error));  // If something goes wrong, we'll see an error message.
+    // Request weather data by city
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
 
+        // Grab the info we want to know about the weather
+        const cityName = data.city.name;
+        const temperature = data.list[0].main.temp;
+        const windSpeed = data.list[0].wind.speed;
+        const humidity = data.list[0].main.humidity;
 
-  document.addEventListener("DOMContentLoaded", function() {
-    // Find the button element on the page
-    const searchBtn = document.getElementById("searchBtn");
+        // Put this info on our webpage!
+        document.getElementById("cityData").innerHTML = `
+          City name: ${cityName} <br>
+          Temp: ${temperature} F<br>
+          Wind: ${windSpeed} MPH<br>
+          Humidity: ${humidity}%
+        `;
+      })
+      .catch(error => console.error("Something went wrong:", error));
+  });
 
-    document.getElementById("presetCityBtn").addEventListener("click", function() {
-        // Set the input field value to Austin
-        document.getElementById("cityInput").value = "Austin";
-      
-        // Now trigger the search button's click event to fetch weather data
-        document.getElementById("searchBtn").click();
-      });
+  // preset buttons
+  const presetButtons = document.querySelectorAll(".preset-city-btn");
   
-    // Listen for a click on the button
-    searchBtn.addEventListener("click", function() {
-      // Find out what city name was typed into the input field
-      const cityName = document.getElementById("cityInput").value;
-      const apiKey = "17c217eb87e1e62fc400a04808b0be98";
-  
-      // Ask OpenWeatherMap for the weather in that city
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=${apiKey}`)
-
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-  
-          // Grabbing the weather details
-          const cityName = data.city.name;
-          const temperature = data.list[0].main.temp;  // This is in Farenheight
-          const windSpeed = data.list[0].wind.speed;  // This is in miles per hour
-          const humidity = data.list[0].main.humidity; // This is a percentage
-  
-          // Updating the #cityData div
-          document.getElementById("cityData").innerHTML = `
-            City name: ${cityName} <br>
-            Temp: ${temperature} F<br>
-            Wind: ${windSpeed} MPH<br>
-            Humidity: ${humidity}%
-          `;
-        })
-        .catch(error => console.error("Something went wrong:", error));
+  presetButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      const presetCity = this.getAttribute("data-city");
+      document.getElementById("cityInput").value = presetCity;
+      searchBtn.click(); // This will trigger the above search button click event
     });
   });
-  
+
+});
