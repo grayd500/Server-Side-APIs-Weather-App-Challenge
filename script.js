@@ -2,7 +2,14 @@ const apiKey = "17c217eb87e1e62fc400a04808b0be98";
 
 document.addEventListener("DOMContentLoaded", function() {
   const searchBtn = document.getElementById("searchBtn");
+  const cityInput = document.getElementById("cityInput");
   
+  cityInput.addEventListener("keydown", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      searchBtn.click();
+    }
+  });
   loadSearchHistory(); // Load the previously searched cities
 
   searchBtn.addEventListener("click", function() {
@@ -37,7 +44,7 @@ function loadSearchHistory() {
   
   const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
   
-  searchHistory.forEach(city => {
+  searchHistory.reverse().forEach(city => {
     const historyButton = document.createElement("button");
     historyButton.textContent = city;
     historyButton.className = "btn btn-secondary btn-lg btn-block my-1 history-button";
@@ -86,13 +93,18 @@ function updateCurrentWeather(currentData, cityName) {
     const currentTemperature = currentData.main.temp;
     const currentWindSpeed = currentData.wind.speed;
     const currentHumidity = currentData.main.humidity;
+    const currentWeatherEmoji = `<img src="https://openweathermap.org/img/wn/${currentData.weather[0].icon}.png">`;
 
     document.getElementById("cityData").innerHTML = `
-      ${cityName} (${new Date().toLocaleDateString()})</br>
-      Temp: ${currentTemperature} F<br>
-      Windspeed: ${currentWindSpeed} MPH<br>
-      Humidity: ${currentHumidity}%<br>
-    `;
+  <div class="weather-info">
+    <div style="font-size: 2em;">${cityName} (${new Date().toLocaleDateString()})</div>
+    <div>${currentWeatherEmoji}</div>
+    <div>Temp: ${currentTemperature} F</div>
+    <div>Windspeed: ${currentWindSpeed} MPH</div>
+    <div>Humidity: ${currentHumidity}%</div>
+
+  </div>
+`;
   } catch (error) {
     console.error("Error in updateCurrentWeather:", error);
   }

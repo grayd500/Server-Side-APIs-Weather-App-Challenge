@@ -1,4 +1,4 @@
-/* Global resets */
+Global resets
 * {
     margin: 0;
     padding: 0;
@@ -98,5 +98,9 @@ body .bg-light {
   
   .day-col-margin {
     margin: 15px 30px;
+  }
+
+  .weather-info {
+    min-height: 175px;
   }
   
