@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 // First, we save the city name and API key in variables. Like putting your lunch in a lunchbox!
 const cityName = "CITY_NAME";
-const apiKey = "17c217eb87e1e62fc400a04808b0be98";
+const apiKey = process.env.API_KEY;
 
 // Then we ask the OpenWeatherMap for weather info for that city.
 fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`)
@@ -20,6 +22,14 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${ap
   document.addEventListener("DOMContentLoaded", function() {
     // Find the button element on the page
     const searchBtn = document.getElementById("searchBtn");
+
+    document.getElementById("presetCityBtn").addEventListener("click", function() {
+        // Set the input field value to Austin
+        document.getElementById("cityInput").value = "Austin";
+      
+        // Now trigger the search button's click event to fetch weather data
+        document.getElementById("searchBtn").click();
+      });
   
     // Listen for a click on the button
     searchBtn.addEventListener("click", function() {
@@ -37,14 +47,14 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${ap
           // Grabbing the weather details
           const cityName = data.city.name;
           const temperature = data.list[0].main.temp;  // This is in Farenheight
-          const windSpeed = data.list[0].wind.speed;  // This is in meters per second
+          const windSpeed = data.list[0].wind.speed;  // This is in miles per hour
           const humidity = data.list[0].main.humidity; // This is a percentage
   
           // Updating the #cityData div
           document.getElementById("cityData").innerHTML = `
             City name: ${cityName} <br>
-            Temp: ${temperature} K<br>
-            Wind: ${windSpeed} m/s<br>
+            Temp: ${temperature} F<br>
+            Wind: ${windSpeed} MPH<br>
             Humidity: ${humidity}%
           `;
         })
