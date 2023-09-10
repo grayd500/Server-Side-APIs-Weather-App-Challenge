@@ -1,65 +1,25 @@
 <!DOCTYPE html>
-<!-- Specifies the document type and version of HTML being used -->
-
 <html lang="en">
-<!-- Opening tag for HTML document; specifies the language as English -->
-
 <head>
-  <!-- Head section contains meta info and links -->
-
   <meta charset="UTF-8">
-  <!-- Sets the character encoding for the document -->
-
   <title>Weather App</title>
-  <!-- Sets the title of the web page, displayed in the browser tab -->
-
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Links to the Bootstrap CSS library for styling -->
-
   <link rel="stylesheet" href="style.css">
-  <!-- Links to the custom stylesheet located in the same directory -->
 </head>
-
 <body>
-  <!-- Body section contains the content of the web page -->
-
   <header class="bg-dark text-white text-center">
-    <!-- Header area, styled with Bootstrap classes -->
     <h1>Weather Dashboard</h1>
-    <!-- Main title for the web page -->
   </header>
-  <!-- Full-width container for the main content -->
   <div class="container-fluid">
-  
-  <!-- Main row that holds the sidebar and the content area -->
     <div class="row">
-    
-        <!-- Sidebar for searching cities; takes up 2 out of 12 grid columns -->
-      <div class="col-lg-2" style="height: 100vh;">
-       
-        <!-- Title for the search section -->
-        <h2>Search for a City</h2>
-        
-
-        <input type="text" class="form-control" id="cityInput" placeholder="Enter city name here">
-        <!-- Text input for searching a city -->
-
+         <div class="col-lg-2" style="height: 100vh;">
+               <h2>Search for a City</h2>
+                <input type="text" class="form-control" id="cityInput" placeholder="Enter city name here">
         <button id="searchBtn" class="btn btn-primary btn-lg btn-block my-3">Search</button>
-        <!-- Button to initiate the search -->
+         <hr>
 
-        <hr>
-        <!-- Horizontal line for visual separation -->
-
-        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city1" data-city="Bocas Del Toro">Bocas Del Toro</button>
-        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city2" data-city="London">London</button>
-        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city3" data-city="Austin">Austin</button>
-        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city4" data-city="Chicago">Chicago</button>
-        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city5" data-city="Tokyo">Tokyo</button>
-        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city6" data-city="Memphis">Memphis</button>
-        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city7" data-city="Orlando">Orlando</button>
-        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city8" data-city="Roanoke">Roanoke</button>
       </div>
-        <!-- Main content area; takes up 10 out of 12 grid columns -->
+        <!-- Main content area -->
       <div class="col-lg-10">
        
         <!-- Row to display current weather data -->
@@ -74,20 +34,12 @@
             <div class="col day-col-padding day-col-margin" id="day6">Day 6</div>            
         </div>
       </div> <!-- End of main content area -->
-
     </div> <!-- End of main row -->
-
   </div> <!-- End of container-fluid -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Links to the jQuery library for easier JavaScript manipulation -->
-
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- Links to the Bootstrap JavaScript library for interactive features -->
-
   <script src="script.js"></script>
-  <!-- Links to the custom JavaScript file located in the same directory -->
-
 </body>
 
 </html>
