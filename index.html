@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+  
+  <!-- This is Bootstrap CSS. It helps make your website look nice. -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- This is your own CSS file. It's in the same place as this HTML file. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="bg-dark text-white text-center">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+          
+          <!--  Sidebar Search Area -->
+          <div class="col-lg-2" style="height: 100vh;">
+            <h2>Search for a City</h2>
+            <input type="text" id="cityInput" placeholder="Enter city name here">
+            <!-- Search button -->
+            <button id="searchBtn" class="btn btn-primary">Search</button>
+          </div>
+    
+          <!-- Main content area -->
+          <div class="col-lg-10">
+            
+            <!-- City Data and Date Row -->
+            <div class="row top-row-padding top-row-margin" id="cityData">
+            City name and today's date<br>
+            Temp:<br>
+            Wind:<br>
+            Humidity:<br>
+        </div>
+  
+            <!-- Bottom 5 equally spaced columns -->
+            <div class="row" id="fiveDayForecast">
+                <div class="col day-col-padding day-col-margin">Day 2</div>
+                <div class="col day-col-padding day-col-margin">Day 3</div>
+                <div class="col day-col-padding day-col-margin">Day 4</div>
+                <div class="col day-col-padding day-col-margin">Day 5</div>
+                <div class="col day-col-padding day-col-margin">Day 6</div>
+            </div>
+            
+          </div> <!-- End of Main content area -->
+    
+        </div> <!-- End of main row -->
+      </div> <!-- End of container-fluid -->
+
+  <!-- This is jQuery. It's like a magic wand for JavaScript. -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <!-- This is Bootstrap's JavaScript. It adds some cool tricks to the Bootstrap clothes. -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <!-- This is your own JavaScript file. It's in the same place as this HTML file. -->
+  <script src="script.js"></script>
+</body>
+</html>
