@@ -5,7 +5,7 @@ const apiKey = "17c217eb87e1e62fc400a04808b0be98";
 document.addEventListener("DOMContentLoaded", function() { 
 
   // Obtain a reference to the search button element by its ID
-  const searchBtn = document.getElementById("searchBtn"); // Find the button
+  const searchBtn = document.getElementById("searchBtn");
 
   // Attach a click event listener to the search button
   searchBtn.addEventListener("click", function() { 
@@ -15,24 +15,59 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fetch weather data using OpenWeatherMap's API for the entered city
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=${apiKey}`)
-      .then(response => response.json()) // Parse the API response as JSON
+      .then(response => response.json())
       .then(data => {
 
         // Extract the relevant weather information from the API response
-        const cityName = data.city.name;
-        const temperature = data.list[0].main.temp;
-        const windSpeed = data.list[0].wind.speed;
-        const humidity = data.list[0].main.humidity;
+        for (let i = 1; i <= 5; i++) {
+          const dayData = data.list[i];
+          // Extract Date - it will be in a format like "2022-01-25 15:00:00"
+          const rawDate = new Date(dayData.dt_txt);
+          const formattedDate = `${rawDate.getMonth() + 1}/${rawDate.getDate()}/${rawDate.getFullYear()}`;
 
-        // Update the HTML content of the "cityData" element with the fetched weather information
-        document.getElementById("cityData").innerHTML = `
-          City name: ${cityName} <br>
-          Temp: ${temperature} F<br>
-          Wind: ${windSpeed} MPH<br>
-          Humidity: ${humidity}%
-        `;
+          // Extract Weather Emoji
+          const weatherIconCode = dayData.weather[0].icon;
+          const weatherEmoji = `<img src="http://openweathermap.org/img/wn/${weatherIconCode}.png">`;
+          const temperature = dayData.main.temp;
+          const windSpeed = dayData.wind.speed;
+          const humidity = dayData.main.humidity;
+
+          // Update one of the divs for the 5-day forecast
+          document.getElementById(`day${i + 1}`).innerHTML = `
+            Date: ${formattedDate}<br>
+            ${weatherEmoji}<br>
+            Temp: ${temperature} F<br>
+            Wind: ${windSpeed} MPH<br>
+            Humidity: ${humidity}%
+          `;
+        }
+
+        // Get latitude and longitude from the 5-day forecast data
+        const lat = data.city.coord.lat;
+        const lon = data.city.coord.lon;
+
+        // Now fetch current weather using these latitude and longitude
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
+          .then(response => response.json())
+          .then(currentData => {
+            // Process the current weather data
+
+            // Extract current weather information
+            const currentTemperature = currentData.main.temp;
+            const currentWindSpeed = currentData.wind.speed;
+            const currentHumidity = currentData.main.humidity;
+
+            // Update the HTML content of the "cityData" element with the fetched current weather information
+            document.getElementById("cityData").innerHTML = `
+              City name: ${cityName} <br>
+              Temp: ${currentTemperature} F<br>
+              Wind: ${currentWindSpeed} MPH<br>
+              Humidity: ${currentHumidity}%
+            `;
+          })
+          .catch(error => console.error("Something went wrong in current weather fetch:", error));
       })
-      .catch(error => console.error("Something went wrong:", error)); // Log any errors to the console
+      .catch(error => console.error("Something went wrong:", error));
   });
 
   // Obtain references to all buttons with the "preset-city-btn" class
