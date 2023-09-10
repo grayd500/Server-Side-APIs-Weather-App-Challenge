@@ -88,6 +88,7 @@ body .bg-light {
   
   .day-col-padding {
     padding: 15px 30px;
+    min-height: 300px;
   }
   
   /* Margins for specific sections */

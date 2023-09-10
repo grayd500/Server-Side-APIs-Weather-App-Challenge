@@ -28,18 +28,18 @@
     <h1>Weather Dashboard</h1>
     <!-- Main title for the web page -->
   </header>
-
+  <!-- Full-width container for the main content -->
   <div class="container-fluid">
-    <!-- Full-width container for the main content -->
-
+  
+  <!-- Main row that holds the sidebar and the content area -->
     <div class="row">
-      <!-- Main row that holds the sidebar and the content area -->
-
-      <div class="col-lg-2" style="height: 100vh;">
+    
         <!-- Sidebar for searching cities; takes up 2 out of 12 grid columns -->
-
-        <h2>Search for a City</h2>
+      <div class="col-lg-2" style="height: 100vh;">
+       
         <!-- Title for the search section -->
+        <h2>Search for a City</h2>
+        
 
         <input type="text" class="form-control" id="cityInput" placeholder="Enter city name here">
         <!-- Text input for searching a city -->
@@ -51,33 +51,18 @@
         <!-- Horizontal line for visual separation -->
 
         <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city1" data-city="Bocas Del Toro">Bocas Del Toro</button>
-        <!-- Preset button for Bocas Del Toro -->
-
         <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city2" data-city="London">London</button>
-        <!-- Preset button for London -->
-
         <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city3" data-city="Austin">Austin</button>
-        <!-- Preset button for Austin -->
-
         <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city4" data-city="Chicago">Chicago</button>
-        <!-- Preset button for Chicago -->
-
         <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city5" data-city="Tokyo">Tokyo</button>
-        <!-- Preset button for Tokyo -->
-
         <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city6" data-city="Memphis">Memphis</button>
-        <!-- Preset button for Memphis -->
-
         <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city7" data-city="Orlando">Orlando</button>
-        <!-- Preset button for Orlando -->
-
         <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city8" data-city="Roanoke">Roanoke</button>
-        <!-- Preset button for Roanoke -->
       </div>
- <!-- Main content area; takes up 10 out of 12 grid columns -->
+        <!-- Main content area; takes up 10 out of 12 grid columns -->
       <div class="col-lg-10">
        
-  <!-- Row to display current weather data -->
+        <!-- Row to display current weather data -->
         <div class="row top-row-padding top-row-margin" id="cityData">
           City name and today's date<br>
           Temp:<br>
