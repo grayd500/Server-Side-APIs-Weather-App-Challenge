@@ -1,72 +1,122 @@
 <!DOCTYPE html>
+<!-- Specifies the document type and version of HTML being used -->
+
 <html lang="en">
+<!-- Opening tag for HTML document; specifies the language as English -->
+
 <head>
+  <!-- Head section contains meta info and links -->
+
   <meta charset="UTF-8">
+  <!-- Sets the character encoding for the document -->
+
   <title>Weather App</title>
-  
-  <!-- This is Bootstrap CSS. It helps make your website look nice. -->
+  <!-- Sets the title of the web page, displayed in the browser tab -->
+
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- This is your own CSS file. It's in the same place as this HTML file. -->
+  <!-- Links to the Bootstrap CSS library for styling -->
+
   <link rel="stylesheet" href="style.css">
+  <!-- Links to the custom stylesheet located in the same directory -->
 </head>
+
 <body>
-    <header class="bg-dark text-white text-center">
-        <h1>Weather Dashboard</h1>
-    </header>
-    <div class="container-fluid">
-        <div class="row">
-          
-          <!--  Sidebar Search Area -->
-          <div class="col-lg-2" style="height: 100vh;">
-            <h2>Search for a City</h2>
-            <input type="text" class="form-control" id="cityInput" placeholder="Enter city name here">
-            <!-- Search button -->
-            <button id="searchBtn" class="btn btn-primary btn-lg btn-block my-3">Search</button>
-            <hr>
-            <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city1" data-city="Bocas Del Toro">Bocas Del Toro</button>
-            <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city2" data-city="London">London</button>
-            <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city3" data-city="Austin">Austin</button>
-            <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city4" data-city="Chicago">Chicago</button>
-            <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city5" data-city="Tokyo">Tokyo</button>
-            <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city6" data-city="Memphis">Memphis</button>
-            <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city7" data-city="Orlando">Orlando</button>
-            <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city8" data-city="Roanoke">Bocas Del Toro</button>
+  <!-- Body section contains the content of the web page -->
 
-          </div>
-    
-          <!-- Main content area -->
-          <div class="col-lg-10">
-            
-            <!-- City Data and Date Row -->
-            <div class="row top-row-padding top-row-margin" id="cityData">
-            City name and today's date<br>
-            Temp:<br>
-            Wind:<br>
-            Humidity:<br>
+  <header class="bg-dark text-white text-center">
+    <!-- Header area, styled with Bootstrap classes -->
+    <h1>Weather Dashboard</h1>
+    <!-- Main title for the web page -->
+  </header>
+
+  <div class="container-fluid">
+    <!-- Full-width container for the main content -->
+
+    <div class="row">
+      <!-- Main row that holds the sidebar and the content area -->
+
+      <div class="col-lg-2" style="height: 100vh;">
+        <!-- Sidebar for searching cities; takes up 2 out of 12 grid columns -->
+
+        <h2>Search for a City</h2>
+        <!-- Title for the search section -->
+
+        <input type="text" class="form-control" id="cityInput" placeholder="Enter city name here">
+        <!-- Text input for searching a city -->
+
+        <button id="searchBtn" class="btn btn-primary btn-lg btn-block my-3">Search</button>
+        <!-- Button to initiate the search -->
+
+        <hr>
+        <!-- Horizontal line for visual separation -->
+
+        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city1" data-city="Bocas Del Toro">Bocas Del Toro</button>
+        <!-- Preset button for Bocas Del Toro -->
+
+        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city2" data-city="London">London</button>
+        <!-- Preset button for London -->
+
+        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city3" data-city="Austin">Austin</button>
+        <!-- Preset button for Austin -->
+
+        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city4" data-city="Chicago">Chicago</button>
+        <!-- Preset button for Chicago -->
+
+        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city5" data-city="Tokyo">Tokyo</button>
+        <!-- Preset button for Tokyo -->
+
+        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city6" data-city="Memphis">Memphis</button>
+        <!-- Preset button for Memphis -->
+
+        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city7" data-city="Orlando">Orlando</button>
+        <!-- Preset button for Orlando -->
+
+        <button type="button" class="preset-city-btn btn btn-secondary btn-lg btn-block" id="city8" data-city="Roanoke">Bocas Del Toro</button>
+        <!-- Preset button for Roanoke -->
+      </div>
+
+      <div class="col-lg-10">
+        <!-- Main content area; takes up 10 out of 12 grid columns -->
+
+        <div class="row top-row-padding top-row-margin" id="cityData">
+          <!-- Row to display city weather data -->
+
+          City name and today's date<br>
+          <!-- Placeholder for city name and today's date -->
+
+          Temp:<br>
+          <!-- Placeholder for temperature -->
+
+          Wind:<br>
+          <!-- Placeholder for wind speed -->
+
+          Humidity:<br>
+          <!-- Placeholder for humidity -->
         </div>
-  
-            <!-- Bottom 5 equally spaced columns -->
-            <div class="row" id="fiveDayForecast">
-                <div class="col day-col-padding day-col-margin">Day 2</div>
-                <div class="col day-col-padding day-col-margin">Day 3</div>
-                <div class="col day-col-padding day-col-margin">Day 4</div>
-                <div class="col day-col-padding day-col-margin">Day 5</div>
-                <div class="col day-col-padding day-col-margin">Day 6</div>
-            </div>
-            
-          </div> <!-- End of Main content area -->
-    
-        </div> <!-- End of main row -->
-      </div> <!-- End of container-fluid -->
 
-  <!-- This is jQuery. It's like a magic wand for JavaScript. -->
+        <!-- Row for the 5-day forecast -->
+        <div class="row" id="fiveDayForecast">
+          <div class="col day-col-padding day-col-margin">Day 2</div>
+          <div class="col day-col-padding day-col-margin">Day 3</div>
+          <div class="col day-col-padding day-col-margin">Day 4</div>
+          <div class="col day-col-padding day-col-margin">Day 5</div>
+          <div class="col day-col-padding day-col-margin">Day 6</div>
+        </div>
+      </div> <!-- End of main content area -->
+
+    </div> <!-- End of main row -->
+
+  </div> <!-- End of container-fluid -->
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
-  <!-- This is Bootstrap's JavaScript. It adds some cool tricks to the Bootstrap clothes. -->
+  <!-- Links to the jQuery library for easier JavaScript manipulation -->
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-  <!-- This is your own JavaScript file. It's in the same place as this HTML file. -->
+  <!-- Links to the Bootstrap JavaScript library for interactive features -->
+
   <script src="script.js"></script>
+  <!-- Links to the custom JavaScript file located in the same directory -->
+
 </body>
+
 </html>
