@@ -47,7 +47,7 @@ Save the file and run the project using a development server (e.g., Live Server 
 4. You will be presented with current and future weather conditions for the selected city.
 5. The city will be added to the search history for easy access.
 
-![Weather Dashboard Screenshot](assets/images/screenshot.png)
+![Weather Dashboard Screenshot](/images/weatherAppSample.png)
 
 ## Credits
 
